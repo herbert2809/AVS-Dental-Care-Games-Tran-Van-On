@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const CARDS = [['brushA', 1], ['candyA', 0], ['dentistA', 1], ['pencilA', 0], ['candyB', 0], ['brushB', 1], ['pencilB', 0], ['dentistB', 1]];
-const PHRASE = { brush: 'Brush your teeth.', candy: 'Eat candy.', dentist: 'See the dentist.', pencil: 'Chew on pencils.' };
+const PHRASE = { brush: 'Brush your teeth.', candy: 'Eat candy.', dentist: 'Go to the dentist.', pencil: 'Chew on pencils.' };
 let n = 0, first = true, locked = false;
 document.querySelectorAll('[data-art]').forEach((x) => { x.innerHTML = art(x.dataset.art); });
 function draw() {

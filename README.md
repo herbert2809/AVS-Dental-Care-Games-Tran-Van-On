@@ -2,7 +2,7 @@
 
 Classroom games for the AVS Open House lesson "Unit 5: Dental Care" (Amazing Science 1, Grade 1) at TiH Tran Van On.
 The games are made for one shared screen and four groups (Group 1-4). The games show no team names; the teacher keeps points on the board.
-This version uses the four phrases of the Tran Van On lesson: brush your teeth, eat candy, see the dentist, chew on pencils. Sentences stay simple ("I see the dentist."), with no time phrases.
+This version uses the four phrases of the Tran Van On lesson: brush your teeth, eat candy, go to the dentist, chew on pencils. Sentences stay simple ("I go to the dentist."), with no time phrases.
 
 ## Games
 
