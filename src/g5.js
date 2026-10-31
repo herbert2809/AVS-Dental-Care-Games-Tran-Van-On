@@ -1,6 +1,6 @@
 // Simple sentences only: I + action (no time phrases).
 const TEACH = { k: 'brushA', line: 'I brush my teeth.' }; // tooth T: the teacher's model
-const PICS = { candyA: 'I eat candy.', dentistA: 'I see the dentist.', pencilA: 'I chew on pencils.', brushB: 'I brush my teeth.' };
+const PICS = { candyA: 'I eat candy.', dentistA: 'I go to the dentist.', pencilA: 'I chew on pencils.', brushB: 'I brush my teeth.' };
 const team = Object.keys(PICS);
 for (let i = team.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); const t = team[i]; team[i] = team[j]; team[j] = t; }
 const keys = [TEACH.k].concat(team);

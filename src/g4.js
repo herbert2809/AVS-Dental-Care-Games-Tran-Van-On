@@ -1,9 +1,9 @@
 const SEGS = [
   { k: 'candyA', line: 'Eat candy.', hint: 'Eat', good: 0 }, // teacher's model round
   { k: 'brushB', line: 'Brush your teeth.', hint: 'Brush', good: 1 }, { k: 'candyB', line: 'Eat candy.', hint: 'Eat', good: 0 },
-  { k: 'dentistA', line: 'See the dentist.', hint: 'See', good: 1 }, { k: 'pencilB', line: 'Chew on pencils.', hint: 'Chew on', good: 0 },
+  { k: 'dentistA', line: 'Go to the dentist.', hint: 'Go to', good: 1 }, { k: 'pencilB', line: 'Chew on pencils.', hint: 'Chew on', good: 0 },
   { k: 'brushA', line: 'Brush your teeth.', hint: 'Brush', good: 1 }, { k: 'pencilA', line: 'Chew on pencils.', hint: 'Chew on', good: 0 },
-  { k: 'dentistB', line: 'See the dentist.', hint: 'See', good: 1 }, { k: 'candyA', line: 'Eat candy.', hint: 'Eat', good: 0 },
+  { k: 'dentistB', line: 'Go to the dentist.', hint: 'Go to', good: 1 }, { k: 'candyA', line: 'Eat candy.', hint: 'Eat', good: 0 },
 ];
 const used = SEGS.map(() => false);
 const CENTERS = [16.7, 50, 83.3]; // 3 x 3 bubbles cover the picture

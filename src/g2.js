@@ -1,4 +1,4 @@
-const PHRASE = { brush: 'Brush your teeth.', candy: 'Eat candy.', dentist: 'See the dentist.', pencil: 'Chew on pencils.' };
+const PHRASE = { brush: 'Brush your teeth.', candy: 'Eat candy.', dentist: 'Go to the dentist.', pencil: 'Chew on pencils.' };
 const say = (k) => PHRASE[k.slice(0, -1)];
 const QS = [
   { t: 'dentistB', o: ['brushB', 'candyB', 'dentistB', 'pencilB'] }, // teacher's model question
