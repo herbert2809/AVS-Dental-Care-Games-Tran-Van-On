@@ -7,7 +7,7 @@
 <style>
 :root{
   --ink:#0E4B5A; --mint:#CFF3EA; --mint-deep:#9FE3D3; --enamel:#FFFDF7; --good:#22A55B; --bad:#E5484D; --sun:#FFC83D;
-  --red:#E5484D; --blue:#3B82F6; --green:#22A55B; --yellow:#F2B705;
+  --red:#E5484D; --blue:#3B82F6; --green:#22A55B; --yellow:#F2B705; --white:#FFFFFF;
   --font: ui-rounded, "Arial Rounded MT Bold", "Nunito", "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
 }
 *{box-sizing:border-box}
@@ -74,7 +74,7 @@ a.btn{color:var(--ink);text-decoration:none;display:inline-block}
 
 .g5{width:100%;height:100%;display:flex;flex-direction:column;gap:6vmin;align-items:center;justify-content:center}
 .head{display:flex;gap:3vmin;align-items:center}
-.teeth{flex:0 1 auto;min-height:0;display:grid;grid-template-columns:repeat(5,1fr);gap:3vmin;width:min(100%,150vmin);align-items:center;align-content:center}
+.teeth{flex:0 1 auto;min-height:0;display:grid;grid-template-columns:repeat(6,1fr);gap:2.6vmin;width:min(100%,165vmin);align-items:center;align-content:center}
 .lucky{position:relative;display:block;width:100%;border:0;background:none;padding:0;aspect-ratio:1}
 .lucky svg{filter:drop-shadow(0 1.2vmin 0 var(--ink))}
 .lucky:active{transform:translateY(.8vmin)}
@@ -262,10 +262,11 @@ function artInner(key) { return (ART[key] || ART.star)(); }
 function art(key, cls) { return `<svg class="art ${cls || ''}" viewBox="0 0 200 200" aria-hidden="true">${artInner(key)}</svg>`; }
 
 
-// Shared engine: teacher model turn + four teams, sounds, finish screen.
+// Shared engine: teacher model turn + five teams, sounds, finish screen.
 const TEAMS = [
   { name: 'Red', color: 'var(--red)' }, { name: 'Blue', color: 'var(--blue)' },
   { name: 'Green', color: 'var(--green)' }, { name: 'Yellow', color: 'var(--yellow)' },
+  { name: 'White', color: 'var(--white)' },
 ];
 const TEACHER = { name: 'Teacher', color: 'var(--ink)' };
 let turn = 0; // -1 = teacher's model round
@@ -273,9 +274,9 @@ const $ = (s, el) => (el || document).querySelector(s);
 const el = (html) => { const t = document.createElement('template'); t.innerHTML = html.trim(); return t.content.firstChild; };
 const who = (i) => (i < 0 ? TEACHER : TEAMS[i]);
 // Points are kept by the teacher on the board, so the games show no scores.
-function setTurn(i) { turn = i < 0 ? -1 : i % 4; document.dispatchEvent(new CustomEvent('turn')); }
+function setTurn(i) { turn = i < 0 ? -1 : i % TEAMS.length; document.dispatchEvent(new CustomEvent('turn')); }
 function nextTurn() { setTurn(turn < 0 ? 0 : turn + 1); }
-// Classes use groups 1-4 with no team names, so only the teacher's model turn shows a label.
+// Classes use groups 1-5 (Red, Blue, Green, Yellow, White) with no team names, so only the teacher's model turn shows a label.
 function turnChip() { return turn < 0 ? `<span class="turn" style="--c:${TEACHER.color}">Teacher</span>` : ''; }
 
 let AC;
@@ -322,15 +323,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Simple sentences only: I + action (no time phrases).
 const TEACH = { k: 'brushA', line: 'I brush my teeth.' }; // tooth T: the teacher's model
-const PICS = { candyA: 'I eat candy.', dentistA: 'I go to the dentist.', pencilA: 'I chew on pencils.', brushB: 'I brush my teeth.' };
+const PICS = { candyA: 'I eat candy.', dentistA: 'I go to the dentist.', pencilA: 'I chew on pencils.', brushB: 'I brush my teeth.', dentistB: 'I go to the dentist.' };
 const team = Object.keys(PICS);
 for (let i = team.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); const t = team[i]; team[i] = team[j]; team[j] = t; }
 const keys = [TEACH.k].concat(team);
 const lineOf = (i) => (i === 0 ? TEACH.line : PICS[keys[i]]);
-const opened = keys.map(() => null); // null closed, otherwise who opened it (-1 teacher, 0-3 team)
+const opened = keys.map(() => null); // null closed, otherwise who opened it (-1 teacher, 0-4 team)
 let cur = -1;
 turn = -1;
-const TINT = ['#FFFFFF', '#FFE08A', '#BFE3FF', '#FFD0DC', '#C9F2D6'];
+const TINT = ['#FFFFFF', '#FFE08A', '#BFE3FF', '#FFD0DC', '#C9F2D6', '#FFE3C2'];
 function draw() {
   $('#who').innerHTML = turnChip();
   $('#teeth').innerHTML = keys.map((k, i) => (opened[i] === null

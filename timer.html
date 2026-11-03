@@ -7,7 +7,7 @@
 <style>
 :root{
   --ink:#0E4B5A; --mint:#CFF3EA; --mint-deep:#9FE3D3; --enamel:#FFFDF7; --good:#22A55B; --bad:#E5484D; --sun:#FFC83D;
-  --red:#E5484D; --blue:#3B82F6; --green:#22A55B; --yellow:#F2B705;
+  --red:#E5484D; --blue:#3B82F6; --green:#22A55B; --yellow:#F2B705; --white:#FFFFFF;
   --font: ui-rounded, "Arial Rounded MT Bold", "Nunito", "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
 }
 *{box-sizing:border-box}
@@ -243,10 +243,11 @@ function artInner(key) { return (ART[key] || ART.star)(); }
 function art(key, cls) { return `<svg class="art ${cls || ''}" viewBox="0 0 200 200" aria-hidden="true">${artInner(key)}</svg>`; }
 
 
-// Shared engine: teacher model turn + four teams, sounds, finish screen.
+// Shared engine: teacher model turn + five teams, sounds, finish screen.
 const TEAMS = [
   { name: 'Red', color: 'var(--red)' }, { name: 'Blue', color: 'var(--blue)' },
   { name: 'Green', color: 'var(--green)' }, { name: 'Yellow', color: 'var(--yellow)' },
+  { name: 'White', color: 'var(--white)' },
 ];
 const TEACHER = { name: 'Teacher', color: 'var(--ink)' };
 let turn = 0; // -1 = teacher's model round
@@ -254,9 +255,9 @@ const $ = (s, el) => (el || document).querySelector(s);
 const el = (html) => { const t = document.createElement('template'); t.innerHTML = html.trim(); return t.content.firstChild; };
 const who = (i) => (i < 0 ? TEACHER : TEAMS[i]);
 // Points are kept by the teacher on the board, so the games show no scores.
-function setTurn(i) { turn = i < 0 ? -1 : i % 4; document.dispatchEvent(new CustomEvent('turn')); }
+function setTurn(i) { turn = i < 0 ? -1 : i % TEAMS.length; document.dispatchEvent(new CustomEvent('turn')); }
 function nextTurn() { setTurn(turn < 0 ? 0 : turn + 1); }
-// Classes use groups 1-4 with no team names, so only the teacher's model turn shows a label.
+// Classes use groups 1-5 (Red, Blue, Green, Yellow, White) with no team names, so only the teacher's model turn shows a label.
 function turnChip() { return turn < 0 ? `<span class="turn" style="--c:${TEACHER.color}">Teacher</span>` : ''; }
 
 let AC;
