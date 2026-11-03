@@ -1,4 +1,4 @@
-const TILES = [['candyA', 0], ['brushA', 1], ['pencilA', 0], ['dentistA', 1], ['soda', 0]];
+const TILES = [['candyA', 0], ['brushA', 1], ['pencilA', 0], ['dentistA', 1], ['soda', 0], ['brushB', 1]];
 turn = -1; // tile chosen by the teacher as a model
 const done = TILES.map(() => false);
 let cur = -1;

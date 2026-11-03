@@ -1,6 +1,6 @@
 :root{
   --ink:#0E4B5A; --mint:#CFF3EA; --mint-deep:#9FE3D3; --enamel:#FFFDF7; --good:#22A55B; --bad:#E5484D; --sun:#FFC83D;
-  --red:#E5484D; --blue:#3B82F6; --green:#22A55B; --yellow:#F2B705;
+  --red:#E5484D; --blue:#3B82F6; --green:#22A55B; --yellow:#F2B705; --white:#FFFFFF;
   --font: ui-rounded, "Arial Rounded MT Bold", "Nunito", "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
 }
 *{box-sizing:border-box}

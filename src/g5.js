@@ -1,14 +1,14 @@
 // Simple sentences only: I + action (no time phrases).
 const TEACH = { k: 'brushA', line: 'I brush my teeth.' }; // tooth T: the teacher's model
-const PICS = { candyA: 'I eat candy.', dentistA: 'I go to the dentist.', pencilA: 'I chew on pencils.', brushB: 'I brush my teeth.' };
+const PICS = { candyA: 'I eat candy.', dentistA: 'I go to the dentist.', pencilA: 'I chew on pencils.', brushB: 'I brush my teeth.', dentistB: 'I go to the dentist.' };
 const team = Object.keys(PICS);
 for (let i = team.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); const t = team[i]; team[i] = team[j]; team[j] = t; }
 const keys = [TEACH.k].concat(team);
 const lineOf = (i) => (i === 0 ? TEACH.line : PICS[keys[i]]);
-const opened = keys.map(() => null); // null closed, otherwise who opened it (-1 teacher, 0-3 team)
+const opened = keys.map(() => null); // null closed, otherwise who opened it (-1 teacher, 0-4 team)
 let cur = -1;
 turn = -1;
-const TINT = ['#FFFFFF', '#FFE08A', '#BFE3FF', '#FFD0DC', '#C9F2D6'];
+const TINT = ['#FFFFFF', '#FFE08A', '#BFE3FF', '#FFD0DC', '#C9F2D6', '#FFE3C2'];
 function draw() {
   $('#who').innerHTML = turnChip();
   $('#teeth').innerHTML = keys.map((k, i) => (opened[i] === null

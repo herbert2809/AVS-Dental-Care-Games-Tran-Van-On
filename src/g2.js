@@ -6,6 +6,7 @@ const QS = [
   { t: 'pencilA', o: ['pencilA', 'brushA', 'dentistA', 'candyA'] },
   { t: 'brushA', o: ['dentistA', 'candyA', 'brushA', 'pencilA'] },
   { t: 'dentistA', o: ['candyA', 'dentistA', 'pencilA', 'brushA'] },
+  { t: 'pencilB', o: ['candyB', 'brushB', 'dentistB', 'pencilB'] },
 ];
 let q = 0, locked = false, voice = null, clip = null;
 turn = -1;
